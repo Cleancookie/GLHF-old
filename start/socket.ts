@@ -1,4 +1,4 @@
-import Ws from 'App/Services/Ws'
+import Ws from 'App/Services/WsService'
 
 Ws.start((socket) => {
   socket.emit('yerd', { doot: 'dooting' })

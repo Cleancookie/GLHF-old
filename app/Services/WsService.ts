@@ -1,7 +1,8 @@
 import socketIo, { Socket } from 'socket.io'
 import Server from '@ioc:Adonis/Core/Server'
+import WsInterface from 'Contracts/interfaces/Ws.interface'
 
-export default new (class Ws {
+export default class WsService implements WsInterface {
   public isReady = false
   public io: socketIo.Server
 
@@ -10,4 +11,4 @@ export default new (class Ws {
     this.io.on('connection', callback)
     this.isReady = true
   }
-})()
+}

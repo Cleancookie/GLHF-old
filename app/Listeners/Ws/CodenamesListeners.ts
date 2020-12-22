@@ -1,4 +1,4 @@
-import Ws from 'App/Services/Ws'
+import Ws from '@ioc:App/Services/WsService'
 import { Socket } from 'socket.io'
 
 const io = Ws.io
