@@ -16,6 +16,7 @@ export default class AppProvider {
   public async ready() {
     // App is ready
     await import('../start/socket')
+    await import('App/Listeners/Ws/CodenamesListeners')
   }
 
   public async shutdown() {

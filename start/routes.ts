@@ -21,3 +21,4 @@
 import Route from '@ioc:Adonis/Core/Route'
 
 Route.get('/', 'PagesController.home')
+Route.get('/:roomId', 'PagesController.game')
