@@ -21,6 +21,7 @@
     console.log(data);
   });
 
-  var joinRoom = () => {socket.emit('join', {roomId})}
+  var join = () => {socket.emit('join', {roomId})}
+  var leave = () => {socket.emit('leave', {roomId})}
 </script>
 @endsection

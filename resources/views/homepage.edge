@@ -3,21 +3,7 @@
 @section('body')
 <div class="container">
     <h1>Homepage</h1>
+
+    <a href="/game-room-123">Game Room 123</a>
 </div>
-@endsection
-
-@section('script')
-<script>
-  var socket = io();
-
-  socket.on('connect', () => {
-    // either with send()
-    socket.emit('log', 'Hello from the client')
-  });
-
-  // handle the event sent with socket.send()
-  socket.on('log', data => {
-    console.log(data);
-  });
-</script>
 @endsection
