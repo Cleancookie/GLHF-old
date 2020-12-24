@@ -4,6 +4,13 @@
 <div class="container">
     <h1>Homepage</h1>
 
-    <a href="/game-room-123">Game Room 123</a>
+    @if(flashMessages.has('error'))
+      <span>{{ flashMessages.get('error') }}</span>
+    @endif
+
+    <form action="/{{ code }}" method="post">
+      <input type="hidden" name="game" value="codenames">
+      <input type="submit" value="Codenames">
+    </form>
 </div>
 @endsection

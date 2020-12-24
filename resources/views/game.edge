@@ -1,14 +1,15 @@
 @layout('layouts/main')
 
 @section('body')
-<div class="container">
-    <h1>Game</h1>
+<div id="main">
+  <h1>Game</h1>
+  <p>Room code: {{ room.code }}</p>
 </div>
 @endsection
 
 @section('script')
 <script>
-  var roomId = "{{ roomId }}"
+  var roomCode = "{{ room.code }}"
   var socket = io();
 
   socket.on('connect', () => {
@@ -21,7 +22,7 @@
     console.log(data);
   });
 
-  var join = () => {socket.emit('join', {roomId})}
-  var leave = () => {socket.emit('leave', {roomId})}
+  var join = () => {socket.emit('join', {roomCode})}
+  var leave = () => {socket.emit('leave', {roomCode})}
 </script>
 @endsection
