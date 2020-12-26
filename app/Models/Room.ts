@@ -1,5 +1,5 @@
 import { DateTime } from 'luxon'
-import { BaseModel, column } from '@ioc:Adonis/Lucid/Orm'
+import { afterCreate, BaseModel, column } from '@ioc:Adonis/Lucid/Orm'
 
 export default class Room extends BaseModel {
   @column({ isPrimary: true })
@@ -16,4 +16,9 @@ export default class Room extends BaseModel {
 
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   public updatedAt: DateTime
+
+  @afterCreate()
+  public static async logCreate(room: Room) {
+    console.log(`Room Created ${room.code}(${room.id})`)
+  }
 }

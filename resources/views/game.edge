@@ -13,11 +13,9 @@
   var socket = io();
 
   socket.on('connect', () => {
-    // either with send()
-    socket.emit('log', 'Hello we are here to play')
+    socket.emit('log', `User(${socket.id}) testing log`)
   });
 
-  // handle the event sent with socket.send()
   socket.on('log', data => {
     console.log(data);
   });

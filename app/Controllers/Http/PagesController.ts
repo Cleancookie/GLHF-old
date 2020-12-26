@@ -7,26 +7,28 @@ export default class PagesController {
   public games = new Map()
 
   public async home({ view }: HttpContextContract) {
-    const wordHash = WordHash({ length: '3' })
-
-    return view.render('homepage', {
-      code: wordHash.hash(Math.random()),
-    })
+    return view.render('homepage')
   }
 
-  public async game({ view, params }: HttpContextContract) {
-    return view.render('game', { roomId: params.roomId })
+  public async game({ view, params, response }: HttpContextContract) {
+    let room = await Room.findBy('code', params.code)
+
+    if (room === null) {
+      return response.notFound()
+    }
+
+    return view.render('game', { room })
   }
 
-  public async create(ctx: HttpContextContract) {
-    const { game } = ctx.request.post()
-    const code = ctx.params.code
+  public async create({ session, response, request }: HttpContextContract) {
+    const { game } = request.post()
+    const code = WordHash({ length: '3' }).hash(Math.random())
 
     let room = await Room.findBy('code', code)
 
     if (room !== null) {
-      ctx.session.flash('error', 'Room already exists!')
-      return ctx.response.redirect('/')
+      session.flash('error', 'Room already exists!')
+      return response.redirect('/')
     }
 
     // Can create room
@@ -35,6 +37,6 @@ export default class PagesController {
     room.game = game
     room = await room.save()
 
-    return 'yerd'
+    return response.redirect(`/${room.code}`)
   }
 }

@@ -1,5 +1,5 @@
 {
-  "name": "codenames",
+  "name": "GLHF.lol",
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -7,7 +7,8 @@
     "start": "node server.js",
     "dev": "node ace serve --watch",
     "lint": "eslint . --ext=.ts",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "migration:refresh": "node ace migration:rollback 0 && node ace migration:run"
   },
   "devDependencies": {
     "@adonisjs/assembler": "^3.0.0",

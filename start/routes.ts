@@ -22,4 +22,4 @@ import Route from '@ioc:Adonis/Core/Route'
 
 Route.get('/', 'PagesController.home')
 Route.get('/:code', 'PagesController.game')
-Route.post('/:code', 'PagesController.create')
+Route.post('/', 'PagesController.create')

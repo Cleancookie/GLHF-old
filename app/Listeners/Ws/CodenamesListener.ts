@@ -4,5 +4,5 @@ import { Socket } from 'socket.io'
 const io = Ws.io
 
 io.on('connect', (socket: Socket) => {
-  console.log('Codename listener hearing you buddy.' + socket.id)
+  console.log(`Codenames listener: new user has joined ${socket.id}`)
 })
