@@ -1,5 +1,4 @@
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
-import { column } from '@ioc:Adonis/Lucid/Orm'
 import Room from 'App/Models/Room'
 import WordHash from 'wordhash'
 
