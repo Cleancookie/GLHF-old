@@ -21,7 +21,7 @@ export default class PagesController {
 
   public async create({ session, response, request }: HttpContextContract) {
     const { game } = request.post()
-    const code = WordHash({ length: '3' }).hash(Math.random())
+    const code: string = WordHash({ length: '3' }).hash(Math.random())
 
     let room = await Room.findBy('code', code)
 
